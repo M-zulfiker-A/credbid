@@ -1,101 +1,106 @@
-import Image from "next/image";
+import Head from "next/head"
+import { Button } from "@/components/ui/button"
+
+export const metadata = {
+  title: "CredBid - Buy Amazon Products with Others' Credit Cards",
+  description:
+    "CredBid connects credit card holders with people who need products from Amazon. Post your desired product and get it purchased by a willing credit card holder.",
+  keywords: "credit card, Amazon, product purchasing, online shopping, credit bidding",
+}
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <div className="min-h-screen bg-gradient-to-br from-dark-dark via-dark to-violet-dark text-white">
+      <Head>
+        <link rel="canonical" href="https://www.credbid.com" />
+      </Head>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+      <main className="container mx-auto px-4 py-12">
+        {/* Attention */}
+        <section className="text-center mb-20">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-violet-light to-violet">
+            Get Your Amazon Wishlist Fulfilled
+          </h1>
+          <p className="text-xl md:text-2xl mb-10 text-gray-300">
+            Connect with credit card holders willing to purchase your desired products
+          </p>
+          <Button
+            size="lg"
+            className="bg-violet hover:bg-violet-dark text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
+            Start Shopping Now
+          </Button>
+        </section>
+
+        {/* Interest */}
+        <section className="grid md:grid-cols-3 gap-8 mb-20">
+          <div className="bg-dark-light bg-opacity-20 p-8 rounded-2xl shadow-xl backdrop-blur-sm">
+            <h2 className="text-2xl font-semibold mb-4 text-violet-light">Post Your Wishlist</h2>
+            <p className="text-gray-300">
+              Share the Amazon products you want and let credit card holders bid to purchase them for you.
+            </p>
+          </div>
+          <div className="bg-dark-light bg-opacity-20 p-8 rounded-2xl shadow-xl backdrop-blur-sm">
+            <h2 className="text-2xl font-semibold mb-4 text-violet-light">Secure Transactions</h2>
+            <p className="text-gray-300">
+              Our platform ensures safe and secure transactions between buyers and credit card holders.
+            </p>
+          </div>
+          <div className="bg-dark-light bg-opacity-20 p-8 rounded-2xl shadow-xl backdrop-blur-sm">
+            <h2 className="text-2xl font-semibold mb-4 text-violet-light">Earn Rewards</h2>
+            <p className="text-gray-300">
+              Credit card holders can earn cashback or points while helping others get their desired products.
+            </p>
+          </div>
+        </section>
+
+        {/* Desire */}
+        <section className="mb-20">
+          <h2 className="text-3xl font-bold mb-10 text-center text-violet-light">What Our Users Say</h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="bg-dark-light bg-opacity-20 p-8 rounded-2xl shadow-xl backdrop-blur-sm">
+              <p className="mb-4 text-gray-300">
+                "I got my dream gadget without waiting to save up. CredBid is a game-changer!"
+              </p>
+              <p className="font-semibold text-violet-light">- Alex S., Happy Shopper</p>
+            </div>
+            <div className="bg-dark-light bg-opacity-20 p-8 rounded-2xl shadow-xl backdrop-blur-sm">
+              <p className="mb-4 text-gray-300">
+                "I maximized my credit card rewards by helping others. It's a win-win!"
+              </p>
+              <p className="font-semibold text-violet-light">- Jamie T., Credit Card Holder</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Action */}
+        <section className="text-center">
+          <h2 className="text-3xl font-bold mb-6 text-violet-light">Ready to Get Started?</h2>
+          <p className="text-xl mb-10 text-gray-300">Join CredBid today and start fulfilling your Amazon wishlist!</p>
+          <div className="space-x-6">
+            <Button
+              size="lg"
+              className="bg-violet hover:bg-violet-dark text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg"
+            >
+              Sign Up Now
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-2 border-violet text-violet hover:bg-violet hover:text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 ease-in-out transform hover:scale-105"
+            >
+              Learn More
+            </Button>
+          </div>
+        </section>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+
+      <footer className="bg-dark-dark bg-opacity-50 text-gray-300 py-8 mt-20">
+        <div className="container mx-auto px-4 text-center">
+          <p>&copy; 2023 CredBid. All rights reserved.</p>
+        </div>
       </footer>
     </div>
-  );
+  )
 }
+
