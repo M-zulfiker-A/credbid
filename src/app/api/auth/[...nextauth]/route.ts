@@ -10,17 +10,16 @@ const handler = NextAuth({
   ],
   secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
-    async signIn({ user, account, profile, email, credentials }) {
+    async signIn() {
       return true;
     },
-    async redirect({ url, baseUrl }) {
-      console.log(url);
+    async redirect({ url }) {
       return url;
     },
-    async session({ session, user, token }) {
+    async session({ session }) {
       return session;
     },
-    async jwt({ token, user, account, profile }) {
+    async jwt({ token }) {
       return token;
     },
   },
