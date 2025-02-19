@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export const metadata = {
   title: "CredBid - Buy Amazon Products with Others' Credit Cards",
@@ -26,12 +27,12 @@ export default function Home() {
             Connect with credit card holders willing to purchase your desired
             products
           </p>
-          <Button
-            size="lg"
+          <Link
+            href={"/auth?flow=signup"}
             className="bg-violet hover:bg-violet-dark text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg"
           >
             Start Shopping Now
-          </Button>
+          </Link>
         </section>
 
         {/* Interest */}
@@ -101,12 +102,12 @@ export default function Home() {
             Join CredBid today and start fulfilling your Amazon wishlist!
           </p>
           <div className="space-x-6">
-            <Button
-              size="lg"
+            <Link
+              href="/auth?flow=signup"
               className="bg-violet hover:bg-violet-dark text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg"
             >
               Sign Up Now
-            </Button>
+            </Link>
             <Button
               size="lg"
               variant="outline"
