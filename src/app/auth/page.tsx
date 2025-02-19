@@ -10,8 +10,8 @@ export default function AuthPage() {
   if (session?.user) {
     redirect("/dashboard");
   }
-  const handleGoogleSignIn = () => {
-    signIn("google", { callbackUrl: "/dashboard" });
+  const handleGoogleSignIn = async () => {
+    await signIn("google", { callbackUrl: "/dashboard" });
   };
 
   return (
