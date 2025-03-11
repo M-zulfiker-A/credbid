@@ -34,10 +34,8 @@ const Page = () => {
       return;
     }
 
-    const jsonRes: { markdown: string } = await res.json();
-    const markDown = jsonRes.markdown;
-
-    setSummary(markDown);
+    const jsonRes = await res.text();
+    setSummary(jsonRes);
     setLoading(false);
     setDialogTrigger(false);
   };
