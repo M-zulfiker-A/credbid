@@ -11,6 +11,7 @@ import { Input } from "@/components/ui/input";
 import { client } from "@/lib/rpc";
 import { LoaderPinwheel } from "lucide-react";
 import { useState } from "react";
+import Markdown from "react-markdown";
 
 const Page = () => {
   const [summary, setSummary] = useState<string>("");
@@ -50,7 +51,7 @@ const Page = () => {
               <form onSubmit={handleSubmit}>
                 <Input type="text" name="productLink" />
                 {loading ? (
-                  <LoaderPinwheel />
+                  <LoaderPinwheel className="animate-spin" />
                 ) : (
                   <Button type="submit">Post</Button>
                 )}
@@ -59,7 +60,7 @@ const Page = () => {
           </DialogHeader>
         </DialogContent>
       </Dialog>
-      {summary && <p>{summary}</p>}
+      {summary && <Markdown>{summary}</Markdown>}
     </>
   );
 };
