@@ -6,13 +6,15 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "credbid",
   "compatibility_date": "2025-02-14",
-  "compatibility_flags": [
-    "nodejs_compat"
-  ],
+  "compatibility_flags": ["nodejs_compat"],
   "pages_build_output_dir": ".vercel/output/static",
   "observability": {
     "enabled": true
-  }
+  },
+  "vars": {
+    "MY_VARIABLE": "production_value from wrnagler toml",
+    "NEXT_PUBLIC_API_URL": "https://credbid.pages.dev"
+  },
   /**
    * Smart Placement
    * Docs: https://developers.cloudflare.com/workers/configuration/smart-placement/#smart-placement
@@ -25,12 +27,21 @@
    * databases, object storage, AI inference, real-time communication and more.
    * https://developers.cloudflare.com/workers/runtime-apis/bindings/
    */
-
+  "ai": {
+    "binding": "AI"
+  },
+  "kv_namespaces": [
+    {
+      "binding": "credbid_kv",
+      "id": "2d0b88e2e4044ca1b2996ae61cca8f15",
+      "preview_id": "f02f3c6ea2c644d583266a24f83d2b03"
+    }
+  ]
   /**
    * Environment Variables
    * https://developers.cloudflare.com/workers/wrangler/configuration/#environment-variables
    */
-  // "vars": { "MY_VARIABLE": "production_value" },
+
   /**
    * Note: Use secrets to store sensitive data.
    * https://developers.cloudflare.com/workers/configuration/secrets/
