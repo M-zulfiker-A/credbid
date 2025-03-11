@@ -41,10 +41,9 @@ const aiSummaryRouter = new Hono<{ Bindings: CloudflareEnv }>().post(
               markdown,
           },
         ],
-        stream: true,
       });
       console.log(aiResponse);
-      return c.text(JSON.stringify(aiResponse), 200);
+      return c.json(JSON.stringify(aiResponse), 200);
     } catch (e: unknown) {
       const message = (e as Error).message;
       return c.json({ error: message }, 500);
