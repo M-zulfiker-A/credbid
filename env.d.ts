@@ -4,4 +4,5 @@ interface CloudflareEnv {
   credbid_kv: KVNamespace;
   MY_VARIABLE: string;
   AI: Ai;
+  GEMINI_API_KEY: string;
 }
