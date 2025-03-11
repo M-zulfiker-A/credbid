@@ -29,9 +29,9 @@ const aiSummaryRouter = new Hono<{ Bindings: CloudflareEnv }>().post(
       const { document } = parseHTML(productPageRes.result);
       const markdown = NodeHtmlMarkdown.translate(document.body.innerHTML);
       return c.json({ markdown }, 200);
-    } catch (e: any) {
-      console.log(e);
-      return c.json({ error: e.message }, 500);
+    } catch (e: unknown) {
+      const message = (e as Error).message;
+      return c.json({ error: message }, 500);
     }
   }
 );

@@ -6,21 +6,13 @@ import {
   DialogTrigger,
   DialogContent,
   DialogTitle,
-  DialogDescription,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { client } from "@/lib/rpc";
-import { InferResponseType } from "hono";
 import { LoaderPinwheel } from "lucide-react";
 import { useState } from "react";
 
-type Props = {};
-type AiSummaryResponseType = InferResponseType<
-  (typeof client.api)["ai-summary"]["$post"],
-  200
->;
-
-const page = (props: Props) => {
+const Page = () => {
   const [summary, setSummary] = useState<string>("");
   const [dialogTrigger, setDialogTrigger] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
@@ -74,4 +66,4 @@ const page = (props: Props) => {
   );
 };
 
-export default page;
+export default Page;
