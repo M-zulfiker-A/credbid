@@ -3,6 +3,7 @@ import { z } from "zod";
 import { zValidator } from "@hono/zod-validator";
 import { parseHTML } from "linkedom";
 import { NodeHtmlMarkdown } from "node-html-markdown";
+import { getRequestContext } from "@cloudflare/next-on-pages";
 
 const aiSummaryRouter = new Hono<{ Bindings: CloudflareEnv }>().post(
   "/",
@@ -18,6 +19,8 @@ const aiSummaryRouter = new Hono<{ Bindings: CloudflareEnv }>().post(
       },
       body: JSON.stringify({
         url: url,
+        rejectResourceTypes: ["image"],
+        rejectRequestPattern: ["/^.*\\.(css)"],
       }),
     };
     try {
@@ -28,7 +31,19 @@ const aiSummaryRouter = new Hono<{ Bindings: CloudflareEnv }>().post(
       }>();
       const { document } = parseHTML(productPageRes.result);
       const markdown = NodeHtmlMarkdown.translate(document.body.innerHTML);
-      return c.json({ markdown }, 200);
+      const ai = getRequestContext().env.AI;
+      const aiResponse = await ai.run("@cf/meta/llama-3.1-8b-instruct", {
+        messages: [
+          {
+            role: "system",
+            content:
+              "You are a helpful assistant , who analyses the given content of a product page and determines the best way to buy that product with the minimum cost. the following is the content of the page" +
+              markdown,
+          },
+        ],
+        stream: true,
+      });
+      return c.json(aiResponse, 200);
     } catch (e: unknown) {
       const message = (e as Error).message;
       return c.json({ error: message }, 500);
